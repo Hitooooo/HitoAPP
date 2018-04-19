@@ -11,5 +11,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // 这是我在分支上面写的东西
         // 我要合并分支
+        // 这是分支新加的东西
     }
 }
