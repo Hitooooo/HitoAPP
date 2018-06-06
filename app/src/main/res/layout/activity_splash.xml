@@ -6,5 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
-
+    <TextView
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:text="王靖雅 is pig"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
