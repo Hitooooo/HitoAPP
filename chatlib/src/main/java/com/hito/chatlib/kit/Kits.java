@@ -1095,7 +1095,6 @@ public class Kits {
 
     public static class Empty {
 
-
         public static boolean check(Object obj) {
             return obj == null;
         }
