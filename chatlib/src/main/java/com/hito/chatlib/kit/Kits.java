@@ -31,6 +31,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 工具类
+ * @author MHT
+ */
 public class Kits {
 
     public static class Package {

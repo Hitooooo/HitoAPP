@@ -11,7 +11,8 @@ public class Api {
         if (gankService == null) {
             synchronized (Api.class) {
                 if (gankService == null) {
-                    gankService = MApi.getInstance().getRetrofit(API_BASE_URL, true).create(GankService.class);
+                    gankService = MApi.getInstance().getRetrofit(API_BASE_URL, true)
+                            .create(GankService.class);
                 }
             }
         }

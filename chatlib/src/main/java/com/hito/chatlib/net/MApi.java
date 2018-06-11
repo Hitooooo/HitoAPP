@@ -22,7 +22,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * 单例模式
+ * 单例模式。拿到Retrofit实例后，通过RxJava进行县城切换和请求异常处理
  *
  * @author MHT
  */
@@ -47,6 +47,7 @@ public class MApi {
 
     /**
      * 懒汉式
+     *
      * @return MApi全局唯一实例
      */
     public static MApi getInstance() {
@@ -60,6 +61,13 @@ public class MApi {
         return mInstance;
     }
 
+    /**
+     * Create Retrofit Service from url and the interface class service
+     * @param baseUrl baseUrl
+     * @param service Service interface
+     * @param <S> Service
+     * @return
+     */
     public static <S> S get(String baseUrl, Class<S> service) {
         return getInstance().getRetrofit(baseUrl, true).create(service);
     }
@@ -79,17 +87,19 @@ public class MApi {
 
     /**
      * 根据baseUrl拿到retrofit实例，而且将不同的baseURL对应的Retrofit实例保存在HashMap中
-     * @param baseUrl 服务器基地址
+     *
+     * @param baseUrl  服务器基地址
      * @param provider provider
-     * @param useRx 是否使用RxJava
+     * @param useRx    是否使用RxJava
      * @return Retrofit
      */
     public Retrofit getRetrofit(String baseUrl, NetProvider provider, boolean useRx) {
         if (Kits.Empty.check(baseUrl)) {
             throw new IllegalStateException("baseUrl can not be null");
         }
-        if (retrofitMap.get(baseUrl) != null) return retrofitMap.get(baseUrl);
-
+        if (retrofitMap.get(baseUrl) != null) {
+            return retrofitMap.get(baseUrl);
+        }
         if (provider == null) {
             provider = providerMap.get(baseUrl);
             if (provider == null) {
@@ -97,7 +107,6 @@ public class MApi {
             }
         }
         checkProvider(provider);
-
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(getClient(baseUrl, provider))
@@ -202,6 +211,7 @@ public class MApi {
 
     /**
      * 异常处理变换
+     *
      * @return
      */
     public static <T extends IModel> FlowableTransformer<T, T> getApiTransformer() {
@@ -212,7 +222,6 @@ public class MApi {
                 return upstream.flatMap(new Function<T, Publisher<T>>() {
                     @Override
                     public Publisher<T> apply(T model) throws Exception {
-
                         if (model == null || model.isNull()) {
                             return Flowable.error(new NetError(model.getErrorMsg(), NetError.NoDataError));
                         } else if (model.isAuthError()) {

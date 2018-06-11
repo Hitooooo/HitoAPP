@@ -9,13 +9,16 @@ import java.net.UnknownHostException;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 
-
+/**
+ * Subscriber for listening Model from Server
+ * @param <T> JavaBean
+ * @author MHT
+ */
 public abstract class ApiSubscriber<T extends IModel> extends ResourceSubscriber<T> {
-
 
     @Override
     public void onError(Throwable e) {
-        NetError error = null;
+        NetError error ;
         if (e != null) {
             if (!(e instanceof NetError)) {
                 if (e instanceof UnknownHostException) {
@@ -33,7 +36,8 @@ public abstract class ApiSubscriber<T extends IModel> extends ResourceSubscriber
 
             if (useCommonErrorHandler()
                     && MApi.getCommonProvider() != null) {
-                if (MApi.getCommonProvider().handleError(error)) {        //使用通用异常处理
+                if (MApi.getCommonProvider().handleError(error)) {
+                    //使用通用异常处理
                     return;
                 }
             }
