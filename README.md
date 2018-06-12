@@ -1,5 +1,8 @@
 # WMChat
 A chat APP between Wang and Meng .
-## APP Code between UI
+## APP  business code
 ## BaseLib for application.
 
+### Retrofit
+### MVP
+### RxJava

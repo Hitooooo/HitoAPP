@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * 主界面的支撑Activity
  * 2018年5月6日 22:53:24
+ * @author MHT
+ * @date 2018年6月12日
  */
 public class MainActivity extends AppCompatActivity {
 
