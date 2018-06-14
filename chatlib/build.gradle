@@ -29,7 +29,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.android.support:appcompat-v7:27.1.1'
     api 'com.android.support.constraint:constraint-layout:1.1.0'
-    // rxjava
+    // RxJava
     api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     api 'io.reactivex.rxjava2:rxjava:2.0.1'
     // retrofit2
@@ -37,4 +37,12 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.2.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     api 'com.google.code.gson:gson:2.8.0'
+    // rxLifeCycle
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+    // RxPermissions
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    api 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
