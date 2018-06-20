@@ -4,22 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".ui.launch.SplashActivity">
 
-    <TextView
-        android:id="@+id/tv_wang"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="王靖雅。生日快乐!"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="按按我试试"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hito.hitoapp">
+    package="com.hito.hitoapp">
 
     <application
         android:name=".App"
@@ -11,14 +11,17 @@
         android:roundIcon="@drawable/ic_launcher_hearts"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="Main"
+            android:launchMode="singleTask" />
 
-        </activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.launch.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

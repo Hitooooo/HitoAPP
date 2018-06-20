@@ -19,5 +19,4 @@ public class BusProvider {
         }
         return bus;
     }
-
 }
