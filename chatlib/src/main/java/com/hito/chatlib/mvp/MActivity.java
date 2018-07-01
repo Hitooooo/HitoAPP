@@ -17,7 +17,7 @@ import butterknife.Unbinder;
  * @author : mht
  * @date : 18-6-14 下午10:29
  */
-public class MActivity<P extends IPresent> extends RxActivity implements IView<P> {
+public abstract class MActivity<P extends IPresent> extends RxActivity implements IView<P> {
     private Activity mActivity;
     private P p;
     private Unbinder unbinder;
@@ -52,21 +52,6 @@ public class MActivity<P extends IPresent> extends RxActivity implements IView<P
 
     }
 
-    @Override
-    public void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public int getLayoutId() {
-        return 0;
-    }
-
-    @Override
-    public P newP() {
-        return null;
-    }
-
     protected P getP() {
         if (p == null) {
             p = newP();
@@ -80,5 +65,13 @@ public class MActivity<P extends IPresent> extends RxActivity implements IView<P
     @Override
     public boolean useEventBus() {
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (unbinder != null) {
+            KnifeKit.unbind(unbinder);
+        }
     }
 }
